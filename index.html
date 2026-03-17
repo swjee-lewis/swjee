@@ -212,30 +212,104 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 
 /* RESPONSIVE */
 @media(max-width:960px){
-  nav{padding:16px 24px}
-  nav.slim{padding:10px 24px}
+  /* NAV */
+  nav{padding:14px 20px}
+  nav.slim{padding:10px 20px}
   .nav-links{display:none}
-  #hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
-  .hero-photo-wrap{max-width:100%}
-  .section{padding:64px 24px}
-  #positioning{padding:60px 24px}
-  .pos-inner{grid-template-columns:1fr}
-  .tech-timeline{grid-template-columns:1fr 1fr}
-  .timeline{padding-left:40px}
-  .timeline::before{left:8px}
-  .tl-date{display:none}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .cap-grid{grid-template-columns:1fr}
-  .imad-grid{grid-template-columns:1fr}
-  .global-grid{grid-template-columns:1fr}
-  .media-grid{grid-template-columns:1fr}
-  .awards-grid{grid-template-columns:1fr 1fr}
-  .photos-grid{grid-template-columns:1fr 1fr}
+
+  /* HERO */
+  #hero{grid-template-columns:1fr;padding:90px 20px 0;gap:28px;min-height:auto}
+  .hero-kicker{font-size:11px;margin-bottom:14px}
+  .hero-name-ko{font-size:14px;margin-bottom:6px}
+  .hero-name-en{font-size:52px}
+  .hero-tagline{font-size:15px;margin-top:16px}
+  .hero-numbers{margin-top:28px}
+  .hero-num .n{font-size:32px}
+  .hero-num .l{font-size:10px}
+  .hero-num{padding:16px 4px}
+
+  /* POSITIONING */
+  #positioning{padding:28px 20px 40px}
+  .pos-inner{grid-template-columns:1fr;gap:28px}
+  .pos-left h2{font-size:28px}
   .pos-cards{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:20px;text-align:center}
-  .footer-info{text-align:center}
-  table{display:block;overflow-x:auto}
-  #quote{padding:80px 24px}
+  .pos-card{padding:18px}
+  .hero-contacts{gap:8px}
+  .hero-contacts a{font-size:11px;padding:7px 12px}
+
+  /* SECTIONS */
+  .section{padding:56px 20px}
+  .sec-title{font-size:28px}
+
+  /* TECH TIMELINE */
+  .tech-timeline{grid-template-columns:1fr}
+  .tt-item{padding:24px 20px}
+  .tt-num{font-size:44px}
+
+  /* STATS */
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-card{padding:32px 16px}
+  .stat-num{font-size:48px}
+
+  /* CAREER TIMELINE */
+  .timeline{padding-left:28px}
+  .timeline::before{left:6px}
+  .tl-date{display:none}
+  .tl-dot{left:-7px;width:14px;height:14px}
+  .tl-item{padding:28px 0 28px 28px}
+  .tl-role{font-size:20px}
+  .tl-desc{font-size:13px}
+
+  /* INVESTMENTS */
+  .inv-big{font-size:64px}
+  .inv-hero{gap:16px;margin-bottom:32px}
+  table{display:block;overflow-x:auto;font-size:13px}
+  thead th{font-size:10px;padding:10px 10px}
+  tbody td{padding:14px 10px}
+  .td-amount{font-size:18px}
+
+  /* CAPABILITIES */
+  .cap-grid{grid-template-columns:1fr}
+  .cap-card{padding:32px 24px}
+
+  /* i-MAD */
+  .imad-grid{grid-template-columns:1fr;gap:32px}
+  .imad-features{grid-template-columns:1fr}
+
+  /* GLOBAL */
+  .global-grid{grid-template-columns:1fr;gap:32px}
+  .brand-card{padding:24px}
+  .brand-nm{font-size:18px}
+
+  /* MEDIA */
+  .media-grid{grid-template-columns:1fr}
+  .media-card{padding:24px}
+  .mc-title{font-size:15px}
+
+  /* AWARDS */
+  .awards-grid{grid-template-columns:1fr}
+  .award-card{padding:20px}
+
+  /* QUOTE */
+  #quote{padding:64px 20px}
+  .q-text{font-size:18px}
+
+  /* FOOTER */
+  footer{flex-direction:column;gap:16px;text-align:center;padding:40px 20px}
+  .footer-name{font-size:22px}
+  .footer-info{text-align:center;font-size:11px}
+}
+
+@media(max-width:430px){
+  .hero-name-en{font-size:42px}
+  .hero-num .n{font-size:26px}
+  .hero-num .l{font-size:9px;letter-spacing:.06em}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat-num{font-size:40px}
+  .awards-grid{grid-template-columns:1fr}
+  .sec-title{font-size:24px}
+  .tl-role{font-size:18px}
+  .inv-big{font-size:52px}
 }
 </style>
 </head>
@@ -290,7 +364,7 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
       <h2>핵심<br><em>포지셔닝</em></h2>
       <p>기업 Value Up, 글로벌 시장 확장,<br>Tech-Driven 신사업 0 to 1</p>
       <div class="hero-contacts" style="margin-top:28px">
-        <a href="mailto:jee.sungwon@gmail.com">✉ jee.sungwon@gmail.com</a>
+        <a href="/cdn-cgi/l/email-protection#a9c3cccc87dadcc7cedec6c7e9cec4c8c0c587cac6c4">✉ <span class="__cf_email__" data-cfemail="016b64642f72746f66766e6f41666c60686d2f626e6c">[email&#160;protected]</span></a>
         <a href="tel:01033417032">☎ 010-3341-7032</a>
         <a href="https://www.linkedin.com/in/sungwon-jee-lewis/" target="_blank" rel="noopener">in LinkedIn</a>
       </div>
@@ -711,13 +785,6 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 <footer>
   <div class="footer-name">지성원<em>.</em></div>
   <div class="footer-info">
-    <a href="mailto:jee.sungwon@gmail.com" style="color:inherit;text-decoration:none">jee.sungwon@gmail.com</a> &nbsp;·&nbsp; 010-3341-7032 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/sungwon-jee-lewis/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">LinkedIn</a><br>
+    <a href="/cdn-cgi/l/email-protection#503a35357e23253e37273f3e10373d31393c7e333f3d" style="color:inherit;text-decoration:none"><span class="__cf_email__" data-cfemail="5b313e3e75282e353c2c34351b3c363a323775383436">[email&#160;protected]</span></a> &nbsp;·&nbsp; 010-3341-7032 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/sungwon-jee-lewis/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">LinkedIn</a><br>
     경기도 성남시 위례동 &nbsp;·&nbsp; 경희대학교 컴퓨터공학 (2002)<br>
-    © 2026 Sungwon Jee — Value Creation Leader
-  </div>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-window.addEventListener('scroll',()=>{
-  const h=document.documentElement;
-  document.getElementById('bar').style.width=(h.scrollTop/(h.
+    © 2026 Sungwon Jee — Value Creation Le
