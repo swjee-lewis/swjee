@@ -65,7 +65,7 @@ nav.slim{padding:12px 60px}
 
 /* SECTION */
 .section{padding:100px 60px}
-.section-alt{background:var(--warm)}
+..section-alt{background:var(--warm)}
 .section-dark{background:var(--black);color:#fff}
 .section-slate{background:var(--slate);color:#fff}
 .section-navy{background:var(--navy);color:#fff}
@@ -114,12 +114,15 @@ nav.slim{padding:12px 60px}
 .inv-big{font-size:clamp(72px,10vw,112px);font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--black)}
 .inv-big span{color:var(--rust)}
 .inv-sub{font-size:15px;font-weight:400;line-height:1.7;color:var(--slate);max-width:260px;padding-bottom:8px}
-table{width:100%;border-collapse:collapse}
-thead th{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 16px;border-bottom:2px solid var(--black)}
-tbody td{padding:18px 16px;font-size:14px;color:var(--slate);border-bottom:1px solid var(--mid);vertical-align:middle}
+table{width:100%;border-collapse:collapse;display:table !important}
+thead th{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 20px;border-bottom:2px solid var(--black)}
+tbody td{padding:20px 20px;font-size:16px;color:var(--slate);border-bottom:1px solid var(--mid);vertical-align:middle}
 tbody tr:hover td{background:rgba(0,0,0,.02)}
-tbody td:first-child{font-weight:600;color:var(--black)}
-.td-amount{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--black)}
+tbody td:first-child{font-weight:700;color:var(--black)}
+.td-year{font-size:18px;font-weight:900;color:var(--black);letter-spacing:-.02em}
+.td-co{font-size:16px;font-weight:700;color:var(--black)}
+.td-amount{display:block;font-size:28px;font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1.1}
+.td-sub{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:5px;letter-spacing:.02em}
 .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;background:var(--rust);color:white}
 .badge.b{background:var(--slate)}
 .badge.br{background:var(--gold);color:var(--black)}
@@ -263,10 +266,8 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
   /* INVESTMENTS */
   .inv-big{font-size:64px}
   .inv-hero{gap:16px;margin-bottom:32px}
-  .hide-mobile{display:none}
-  table{display:table;width:100%;overflow:visible;font-size:13px}
-  thead th{font-size:10px;padding:10px 8px}
-  tbody td{padding:14px 8px}
+  table{display:none !important}
+  .inv-cards{display:block !important}
   .td-amount{font-size:18px}
 
   /* CAPABILITIES */
@@ -312,6 +313,15 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
   .tl-role{font-size:18px}
   .inv-big{font-size:52px}
 }
+
+/* INVESTMENT CARDS (mobile only) */
+.inv-cards{display:none}
+.inv-card{background:var(--white);border:1px solid var(--mid);padding:18px 20px;margin-bottom:10px}
+.inv-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.inv-card-year{font-size:13px;font-weight:700;color:var(--black);min-width:36px}
+.inv-card-amount{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--black);margin-left:auto}
+.inv-card-co{font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
+.inv-card-sub{font-size:12px;font-weight:400;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -523,15 +533,82 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
     <div class="inv-sub">Seed부터 Series B까지<br>전 라운드 IR 전략 수립·실행 및<br>딜 클로징 직접 총괄</div>
   </div>
   <table>
-    <thead><tr><th>연도</th><th>소속 기업</th><th>투자 구분</th><th>발행 형태</th><th>투자 규모</th><th class="hide-mobile">주요 투자자</th></tr></thead>
+    <thead>
+      <tr>
+        <th>연도</th>
+        <th>소속 기업</th>
+        <th>투자 구분</th>
+        <th>투자 규모</th>
+        <th class="hide-mobile">주요 투자자</th>
+      </tr>
+    </thead>
     <tbody>
-      <tr><td>2018</td><td>다날 F&amp;B</td><td><span class="badge seed">초기투자</span></td><td>CB</td><td class="td-amount">150억</td><td class="hide-mobile">주요 VC 및 금융권 FI</td></tr>
-      <tr><td>2021</td><td>비트코퍼레이션</td><td><span class="badge">Series A</span></td><td>RCPS</td><td class="td-amount">90억</td><td class="hide-mobile">스톤브릿지벤처스, SL인베, IBK기업은행</td></tr>
-      <tr><td>2023</td><td>비트코퍼레이션</td><td><span class="badge br">Bridge</span></td><td>RCPS</td><td class="td-amount">15억</td><td class="hide-mobile">전략적 개인 투자자</td></tr>
-      <tr><td>2024</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">80억</td><td class="hide-mobile">KB증권, 신한투자증권 등</td></tr>
-      <tr><td>2025</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">50억</td><td class="hide-mobile">전략적 투자자(SI) — 현대계열 등</td></tr>
+      <tr>
+        <td class="td-year">2018</td>
+        <td class="td-co">다날 F&amp;B</td>
+        <td><span class="badge seed">초기투자</span></td>
+        <td><span class="td-amount">150억</span><span class="td-sub">CB</span></td>
+        <td class="hide-mobile">주요 VC 및 금융권 FI</td>
+      </tr>
+      <tr>
+        <td class="td-year">2021</td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td><span class="badge">Series A</span></td>
+        <td><span class="td-amount">90억</span><span class="td-sub">RCPS</span></td>
+        <td class="hide-mobile">스톤브릿지벤처스, SL인베, IBK기업은행</td>
+      </tr>
+      <tr>
+        <td class="td-year">2023</td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td><span class="badge br">Bridge</span></td>
+        <td><span class="td-amount">15억</span><span class="td-sub">RCPS</span></td>
+        <td class="hide-mobile">전략적 개인 투자자</td>
+      </tr>
+      <tr>
+        <td class="td-year">2024</td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td><span class="badge b">Series B</span></td>
+        <td><span class="td-amount">80억</span><span class="td-sub">RCPS</span></td>
+        <td class="hide-mobile">KB증권, 신한투자증권 등</td>
+      </tr>
+      <tr>
+        <td class="td-year">2025</td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td><span class="badge b">Series B</span></td>
+        <td><span class="td-amount">50억</span><span class="td-sub">RCPS</span></td>
+        <td class="hide-mobile">전략적 투자자(SI) — 현대계열 등</td>
+      </tr>
     </tbody>
   </table>
+
+  <!-- 모바일 카드 -->
+  <div class="inv-cards">
+    <div class="inv-card">
+      <div class="inv-card-top"><span class="inv-card-year">2018</span><span class="badge seed">초기투자</span><span class="inv-card-amount">150억</span></div>
+      <div class="inv-card-co">다날 F&amp;B</div>
+      <div class="inv-card-sub">CB · 주요 VC 및 금융권 FI</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-top"><span class="inv-card-year">2021</span><span class="badge">Series A</span><span class="inv-card-amount">90억</span></div>
+      <div class="inv-card-co">비트코퍼레이션</div>
+      <div class="inv-card-sub">RCPS · 스톤브릿지벤처스, SL인베, IBK기업은행</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-top"><span class="inv-card-year">2023</span><span class="badge br">Bridge</span><span class="inv-card-amount">15억</span></div>
+      <div class="inv-card-co">비트코퍼레이션</div>
+      <div class="inv-card-sub">RCPS · 전략적 개인 투자자</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-top"><span class="inv-card-year">2024</span><span class="badge b">Series B</span><span class="inv-card-amount">80억</span></div>
+      <div class="inv-card-co">비트코퍼레이션</div>
+      <div class="inv-card-sub">RCPS · KB증권, 신한투자증권 등</div>
+    </div>
+    <div class="inv-card">
+      <div class="inv-card-top"><span class="inv-card-year">2025</span><span class="badge b">Series B</span><span class="inv-card-amount">50억</span></div>
+      <div class="inv-card-co">비트코퍼레이션</div>
+      <div class="inv-card-sub">RCPS · 전략적 투자자(SI) — 현대계열 등</div>
+    </div>
+  </div>
 </section>
 
 <!-- CAPABILITIES -->
