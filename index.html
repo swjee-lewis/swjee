@@ -104,7 +104,7 @@ nav.slim{padding:12px 60px}
 /* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
 .stat-card{background:rgba(255,255,255,.04);padding:48px 36px;text-align:center}
-.stat-num{font-size:clamp(52px,6vw,80px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1;display:block}
+.stat-num{font-size:clamp(40px,5vw,80px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1;display:block}
 .stat-num em{color:var(--rust);font-style:normal}
 .stat-label{display:block;margin-top:12px;font-size:15px;font-weight:700;color:#fff}
 .stat-sub{display:block;margin-top:6px;font-size:12px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.04em}
@@ -251,8 +251,10 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 
   /* STATS */
   .stats-grid{grid-template-columns:1fr 1fr}
-  .stat-card{padding:32px 16px}
-  .stat-num{font-size:48px}
+  .stat-card{padding:24px 8px}
+  .stat-num{font-size:36px;letter-spacing:-.03em}
+  .stat-label{font-size:13px}
+  .stat-sub{font-size:11px}
 
   /* CAREER TIMELINE */
   .timeline{padding-left:28px}
@@ -537,7 +539,6 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
       <tr>
         <th>연도</th>
         <th>소속 기업</th>
-        <th>투자 구분</th>
         <th>투자 규모</th>
         <th class="hide-mobile">주요 투자자</th>
       </tr>
@@ -545,36 +546,31 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
     <tbody>
       <tr>
         <td class="td-year">2018</td>
-        <td class="td-co">다날 F&amp;B</td>
-        <td><span class="badge seed">초기투자</span></td>
+        <td class="td-co">다날 F&amp;B<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--rust);text-transform:uppercase">초기투자</span></td>
         <td><span class="td-amount">150억</span><span class="td-sub">CB</span></td>
         <td class="hide-mobile">주요 VC 및 금융권 FI</td>
       </tr>
       <tr>
         <td class="td-year">2021</td>
-        <td class="td-co">비트코퍼레이션</td>
-        <td><span class="badge">Series A</span></td>
+        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--rust);text-transform:uppercase">Series A</span></td>
         <td><span class="td-amount">90억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">스톤브릿지벤처스, SL인베, IBK기업은행</td>
       </tr>
       <tr>
         <td class="td-year">2023</td>
-        <td class="td-co">비트코퍼레이션</td>
-        <td><span class="badge br">Bridge</span></td>
+        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--gold);text-transform:uppercase">Bridge</span></td>
         <td><span class="td-amount">15억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">전략적 개인 투자자</td>
       </tr>
       <tr>
         <td class="td-year">2024</td>
-        <td class="td-co">비트코퍼레이션</td>
-        <td><span class="badge b">Series B</span></td>
+        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);text-transform:uppercase">Series B</span></td>
         <td><span class="td-amount">80억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">KB증권, 신한투자증권 등</td>
       </tr>
       <tr>
         <td class="td-year">2025</td>
-        <td class="td-co">비트코퍼레이션</td>
-        <td><span class="badge b">Series B</span></td>
+        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);text-transform:uppercase">Series B</span></td>
         <td><span class="td-amount">50억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">전략적 투자자(SI) — 현대계열 등</td>
       </tr>
