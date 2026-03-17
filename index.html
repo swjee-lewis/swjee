@@ -164,7 +164,7 @@ tbody td:first-child{font-weight:600;color:var(--black)}
 .loc-list h3{font-size:26px;font-weight:800;color:#fff;margin-bottom:24px}
 .loc-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .loc-item:last-child{border-bottom:none}
-.loc-flag{font-size:22px;flex-shrink:0}
+.loc-flag{font-size:10px;font-weight:700;letter-spacing:.1em;flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);padding:4px 8px;min-width:36px;text-align:center}
 .loc-country{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
 .loc-detail{font-size:13px;font-weight:400;color:rgba(255,255,255,.5)}
 
@@ -263,9 +263,10 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
   /* INVESTMENTS */
   .inv-big{font-size:64px}
   .inv-hero{gap:16px;margin-bottom:32px}
-  table{display:block;overflow-x:auto;font-size:13px}
-  thead th{font-size:10px;padding:10px 10px}
-  tbody td{padding:14px 10px}
+  .hide-mobile{display:none}
+  table{display:table;width:100%;overflow:visible;font-size:13px}
+  thead th{font-size:10px;padding:10px 8px}
+  tbody td{padding:14px 8px}
   .td-amount{font-size:18px}
 
   /* CAPABILITIES */
@@ -522,13 +523,13 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
     <div class="inv-sub">Seed부터 Series B까지<br>전 라운드 IR 전략 수립·실행 및<br>딜 클로징 직접 총괄</div>
   </div>
   <table>
-    <thead><tr><th>연도</th><th>소속 기업</th><th>투자 구분</th><th>발행 형태</th><th>투자 규모</th><th>주요 투자자</th></tr></thead>
+    <thead><tr><th>연도</th><th>소속 기업</th><th>투자 구분</th><th>발행 형태</th><th>투자 규모</th><th class="hide-mobile">주요 투자자</th></tr></thead>
     <tbody>
-      <tr><td>2018</td><td>다날 F&amp;B</td><td><span class="badge seed">초기투자</span></td><td>CB</td><td class="td-amount">150억</td><td>주요 VC 및 금융권 FI</td></tr>
-      <tr><td>2021</td><td>비트코퍼레이션</td><td><span class="badge">Series A</span></td><td>RCPS</td><td class="td-amount">90억</td><td>스톤브릿지벤처스, SL인베, IBK기업은행</td></tr>
-      <tr><td>2023</td><td>비트코퍼레이션</td><td><span class="badge br">Bridge</span></td><td>RCPS</td><td class="td-amount">15억</td><td>전략적 개인 투자자</td></tr>
-      <tr><td>2024</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">80억</td><td>KB증권, 신한투자증권 등</td></tr>
-      <tr><td>2025</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">50억</td><td>전략적 투자자(SI) — 현대계열 등</td></tr>
+      <tr><td>2018</td><td>다날 F&amp;B</td><td><span class="badge seed">초기투자</span></td><td>CB</td><td class="td-amount">150억</td><td class="hide-mobile">주요 VC 및 금융권 FI</td></tr>
+      <tr><td>2021</td><td>비트코퍼레이션</td><td><span class="badge">Series A</span></td><td>RCPS</td><td class="td-amount">90억</td><td class="hide-mobile">스톤브릿지벤처스, SL인베, IBK기업은행</td></tr>
+      <tr><td>2023</td><td>비트코퍼레이션</td><td><span class="badge br">Bridge</span></td><td>RCPS</td><td class="td-amount">15억</td><td class="hide-mobile">전략적 개인 투자자</td></tr>
+      <tr><td>2024</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">80억</td><td class="hide-mobile">KB증권, 신한투자증권 등</td></tr>
+      <tr><td>2025</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">50억</td><td class="hide-mobile">전략적 투자자(SI) — 현대계열 등</td></tr>
     </tbody>
   </table>
 </section>
@@ -643,12 +644,12 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
     </div>
     <div class="loc-list">
       <h3>운영 국가 및 파트너십</h3>
-      <div class="loc-item"><span class="loc-flag">🇯🇵</span><div><div class="loc-country">Japan</div><div class="loc-detail">비트 v3.5 제품 공급 계약 — 힐스톤 재팬</div></div></div>
-      <div class="loc-item"><span class="loc-flag">🇸🇬</span><div><div class="loc-country">Singapore</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 / 개점 1개월 월 매출 1억+</div></div></div>
-      <div class="loc-item"><span class="loc-flag">🇲🇾</span><div><div class="loc-country">Malaysia</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 다점포 운영</div></div></div>
-      <div class="loc-item"><span class="loc-flag">🇨🇳</span><div><div class="loc-country">China</div><div class="loc-detail">달콤커피 현지 파트너십 및 매장 운영</div></div></div>
-      <div class="loc-item"><span class="loc-flag">🇲🇦</span><div><div class="loc-country">Morocco</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 계약 체결</div></div></div>
-      <div class="loc-item"><span class="loc-flag">🇪🇸</span><div><div class="loc-country">Spain — MWC 2019</div><div class="loc-detail">바르셀로나 MWC 참가 · 비트 2.0 글로벌 전시</div></div></div>
+      <div class="loc-item"><span class="loc-flag">JP</span><div><div class="loc-country">Japan</div><div class="loc-detail">비트 v3.5 제품 공급 계약 — 힐스톤 재팬</div></div></div>
+      <div class="loc-item"><span class="loc-flag">SG</span><div><div class="loc-country">Singapore</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 / 개점 1개월 월 매출 1억+</div></div></div>
+      <div class="loc-item"><span class="loc-flag">MY</span><div><div class="loc-country">Malaysia</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 다점포 운영</div></div></div>
+      <div class="loc-item"><span class="loc-flag">CN</span><div><div class="loc-country">China</div><div class="loc-detail">달콤커피 현지 파트너십 및 매장 운영</div></div></div>
+      <div class="loc-item"><span class="loc-flag">MA</span><div><div class="loc-country">Morocco</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 계약 체결</div></div></div>
+      <div class="loc-item"><span class="loc-flag">ES</span><div><div class="loc-country">Spain — MWC 2019</div><div class="loc-detail">바르셀로나 MWC 참가 · 비트 2.0 글로벌 전시</div></div></div>
     </div>
   </div>
 </section>
