@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>지성원 — Value Creation Leader</title>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#111;--white:#FAFAF7;--warm:#F0EBE1;--mid:#DDD6C8;
+  --rust:#C04A2A;--gold:#C9964A;--slate:#4A5560;--muted:#8A9AA5;
+  --navy:#0F1B2D;--blue:#2563EB;
+  --font:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* PROGRESS */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--rust);z-index:200;transition:width .1s linear}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:20px 60px;background:rgba(250,250,247,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.07);transition:padding .3s}
+nav.slim{padding:12px 60px}
+.nav-name{font-size:18px;font-weight:800;letter-spacing:-.3px;color:var(--black);text-decoration:none}
+.nav-name em{color:var(--rust);font-style:normal}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--slate);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--rust)}
+
+/* HERO */
+#hero{min-height:100vh;padding:120px 60px 0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;background:var(--white)}
+.hero-photo-wrap{position:relative;width:100%;max-width:420px}
+.hero-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:#ddd}
+.hero-photo-badge{position:absolute;bottom:-20px;right:-20px;background:var(--rust);color:#fff;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.5}
+
+.hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:20px}
+.hero-kicker::before{content:'';display:block;width:36px;height:1px;background:var(--rust)}
+.hero-name-ko{display:block;font-size:clamp(14px,1.8vw,20px);font-weight:500;letter-spacing:.22em;color:var(--slate);margin-bottom:8px}
+.hero-name-en{font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.95;color:var(--black)}
+.hero-tagline{margin-top:24px;font-size:16px;font-weight:400;line-height:1.75;color:var(--slate);max-width:480px}
+.hero-tagline strong{color:var(--rust);font-weight:700}
+.hero-numbers{display:flex;margin-top:40px;margin-bottom:0;border-top:1px solid var(--mid);border-bottom:1px solid var(--mid)}
+.hero-num{flex:1;padding:24px 8px;border-right:1px solid var(--mid)}
+.hero-num:last-child{border-right:none}
+.hero-num .n{display:block;font-size:44px;font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1}
+.hero-num .n sup{font-size:.5em;color:var(--rust);vertical-align:super}
+.hero-num .l{display:block;margin-top:6px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* POSITIONING (below hero) */
+#positioning{background:var(--navy);color:#fff;padding:24px 60px 48px}
+.pos-inner{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center}
+.pos-left h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1.1;color:#fff}
+.pos-left h2 em{color:var(--rust);font-style:normal;display:block}
+.pos-left p{margin-top:16px;font-size:14px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.75}
+.pos-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pos-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:24px;transition:border-color .3s}
+.pos-card:hover{border-color:var(--rust)}
+.pos-card-label{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.pos-card-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px}
+.pos-card-body{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);line-height:1.7}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.hero-contacts a{font-size:12px;font-weight:500;letter-spacing:.04em;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15);padding:8px 16px;text-decoration:none;transition:all .2s}
+.hero-contacts a:hover{color:#fff;border-color:var(--rust)}
+
+/* SECTION */
+.section{padding:100px 60px}
+.section-alt{background:var(--warm)}
+.section-dark{background:var(--black);color:#fff}
+.section-slate{background:var(--slate);color:#fff}
+.section-navy{background:var(--navy);color:#fff}
+.sec-header{display:flex;align-items:center;gap:16px;margin-bottom:60px}
+.sec-no{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);flex-shrink:0}
+.section-dark .sec-no,.section-slate .sec-no,.section-navy .sec-no{color:var(--gold)}
+.sec-title{font-size:clamp(30px,4vw,50px);font-weight:900;letter-spacing:-.03em;line-height:1.05}
+.sec-line{flex:1;height:1px;background:rgba(0,0,0,.1)}
+.section-dark .sec-line,.section-slate .sec-line,.section-navy .sec-line{background:rgba(255,255,255,.12)}
+
+/* TECH TIMELINE (overview) */
+.tech-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.tt-item{background:rgba(255,255,255,.04);padding:36px 28px;position:relative;border-top:3px solid transparent;transition:border-color .3s,background .3s}
+.tt-item:hover{background:rgba(255,255,255,.08);border-color:var(--rust)}
+.tt-num{font-size:56px;font-weight:900;color:rgba(255,255,255,.06);letter-spacing:-.04em;line-height:1;margin-bottom:16px}
+.tt-period{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+.tt-stage{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:14px}
+.tt-co{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
+.tt-role{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);line-height:1.6}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:180px}
+.timeline::before{content:'';position:absolute;left:148px;top:0;bottom:0;width:1px;background:rgba(255,255,255,.1)}
+.tl-item{position:relative;padding:44px 0 44px 48px;border-bottom:1px solid rgba(255,255,255,.06)}
+.tl-item:last-child{border-bottom:none}
+.tl-date{position:absolute;left:-180px;top:44px;width:140px;text-align:right;padding-right:32px}
+.tl-yr{display:block;font-size:32px;font-weight:900;letter-spacing:-.03em;color:rgba(255,255,255,.1);line-height:1}
+.tl-period{display:block;margin-top:4px;font-size:11px;font-weight:500;letter-spacing:.08em;color:rgba(255,255,255,.3)}
+.tl-dot{position:absolute;left:-8px;top:56px;width:16px;height:16px;border-radius:50%;background:var(--rust);border:3px solid var(--black);box-shadow:0 0 0 1px var(--rust)}
+.tl-co{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tl-role{font-size:26px;font-weight:800;line-height:1.2;margin-bottom:16px}
+.tl-desc{font-size:14px;font-weight:400;line-height:1.85;color:rgba(250,250,247,.6);max-width:640px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tl-tag{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.45)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.stat-card{background:rgba(255,255,255,.04);padding:48px 36px;text-align:center}
+.stat-num{font-size:clamp(52px,6vw,80px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1;display:block}
+.stat-num em{color:var(--rust);font-style:normal}
+.stat-label{display:block;margin-top:12px;font-size:15px;font-weight:700;color:#fff}
+.stat-sub{display:block;margin-top:6px;font-size:12px;font-weight:400;color:rgba(255,255,255,.4);letter-spacing:.04em}
+
+/* INVESTMENTS */
+.inv-hero{display:flex;align-items:flex-end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
+.inv-big{font-size:clamp(72px,10vw,112px);font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--black)}
+.inv-big span{color:var(--rust)}
+.inv-sub{font-size:15px;font-weight:400;line-height:1.7;color:var(--slate);max-width:260px;padding-bottom:8px}
+table{width:100%;border-collapse:collapse}
+thead th{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 16px;border-bottom:2px solid var(--black)}
+tbody td{padding:18px 16px;font-size:14px;color:var(--slate);border-bottom:1px solid var(--mid);vertical-align:middle}
+tbody tr:hover td{background:rgba(0,0,0,.02)}
+tbody td:first-child{font-weight:600;color:var(--black)}
+.td-amount{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--black)}
+.badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;background:var(--rust);color:white}
+.badge.b{background:var(--slate)}
+.badge.br{background:var(--gold);color:var(--black)}
+.badge.seed{background:transparent;border:1px solid var(--slate);color:var(--slate)}
+
+/* CAPABILITIES */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.cap-card{background:var(--warm);padding:44px 36px;position:relative;overflow:hidden;transition:background .3s;cursor:default}
+.cap-card:hover{background:var(--black)}
+.cap-card:hover .cap-title{color:#fff}
+.cap-card:hover .cap-body{color:rgba(250,250,247,.65)}
+.cap-card:hover .cap-bg{color:rgba(255,255,255,.04)}
+.cap-bg{position:absolute;bottom:-16px;right:8px;font-size:88px;font-weight:900;color:rgba(0,0,0,.05);line-height:1;pointer-events:none;transition:color .3s}
+.cap-ico{font-size:28px;margin-bottom:20px;display:block}
+.cap-title{font-size:19px;font-weight:800;line-height:1.3;margin-bottom:12px;color:var(--black);transition:color .3s}
+.cap-body{font-size:13px;font-weight:400;line-height:1.8;color:var(--slate);transition:color .3s}
+
+/* i-MAD PLATFORM */
+.imad-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.imad-desc{font-size:14px;font-weight:400;line-height:1.85;color:rgba(255,255,255,.6);margin-bottom:32px}
+.imad-stages{display:flex;flex-direction:column;gap:12px}
+.imad-stage{background:rgba(255,255,255,.04);border-left:3px solid var(--rust);padding:18px 20px}
+.imad-stage-name{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.imad-stage-body{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);line-height:1.7}
+.imad-right h3{font-size:22px;font-weight:800;color:#fff;margin-bottom:20px}
+.imad-features{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.imad-feat{background:rgba(255,255,255,.05);padding:18px 16px;border:1px solid rgba(255,255,255,.07)}
+.imad-feat-title{font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.imad-feat-body{font-size:12px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* GLOBAL */
+.global-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.brand-card{border:1px solid rgba(255,255,255,.1);padding:32px;margin-bottom:20px;position:relative;overflow:hidden;transition:border-color .3s}
+.brand-card:hover{border-color:var(--rust)}
+.brand-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--rust)}
+.brand-nm{font-size:22px;font-weight:900;color:#fff;margin-bottom:6px}
+.brand-per{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.brand-txt{font-size:13px;font-weight:400;line-height:1.8;color:rgba(250,250,247,.55)}
+.brand-nums{display:flex;gap:28px;margin-top:20px;flex-wrap:wrap}
+.bn .n{font-size:26px;font-weight:900;color:#fff;line-height:1}
+.bn .l{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px}
+.loc-list h3{font-size:26px;font-weight:800;color:#fff;margin-bottom:24px}
+.loc-item{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.loc-item:last-child{border-bottom:none}
+.loc-flag{font-size:22px;flex-shrink:0}
+.loc-country{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.loc-detail{font-size:13px;font-weight:400;color:rgba(255,255,255,.5)}
+
+/* MEDIA */
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.media-card{background:var(--warm);padding:32px;transition:background .3s;display:flex;flex-direction:column;text-decoration:none}
+.media-card:hover{background:var(--rust)}
+.media-card:hover .mc-src,.media-card:hover .mc-title,.media-card:hover .mc-body{color:#fff}
+.mc-src{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:10px;margin-bottom:12px;transition:color .3s}
+.mc-src::before{content:'';display:block;width:16px;height:1px;background:currentColor}
+.mc-title{font-size:16px;font-weight:800;line-height:1.4;color:var(--black);margin-bottom:10px;transition:color .3s;flex:1}
+.mc-body{font-size:12px;font-weight:400;line-height:1.7;color:var(--slate);transition:color .3s}
+.mc-link{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:16px;transition:color .3s}
+.media-card:hover .mc-link{color:rgba(255,255,255,.8)}
+
+/* AWARDS */
+.awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.award-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);padding:24px;transition:border-color .3s}
+.award-card:hover{border-color:var(--gold)}
+.award-year{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:8px}
+.award-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.35}
+.award-body{font-size:12px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.6}
+
+/* PHOTOS */
+.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3}
+.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.photo-item:hover img{transform:scale(1.04)}
+.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:12px;font-weight:500;color:rgba(255,255,255,.85)}
+.photo-item.tall{grid-row:span 2;aspect-ratio:auto}
+.photo-item.tall img{height:100%}
+
+/* QUOTE */
+#quote{padding:120px 60px;background:var(--black);text-align:center;position:relative;overflow:hidden}
+#quote::before{content:'"';position:absolute;top:-80px;left:50%;transform:translateX(-50%);font-size:480px;font-weight:900;color:rgba(255,255,255,.025);line-height:1;pointer-events:none}
+.q-text{position:relative;z-index:1;font-size:clamp(20px,3vw,36px);font-weight:600;line-height:1.65;color:#fff;max-width:800px;margin:0 auto 32px}
+.q-text em{color:var(--rust);font-style:normal;font-weight:800}
+.q-attr{font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* FOOTER */
+footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.07)}
+.footer-name{font-size:26px;font-weight:900;letter-spacing:-.02em}
+.footer-name em{color:var(--rust);font-style:normal}
+.footer-info{font-size:12px;font-weight:400;letter-spacing:.03em;color:rgba(255,255,255,.3);text-align:right;line-height:1.9}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  nav.slim{padding:10px 24px}
+  .nav-links{display:none}
+  #hero{grid-template-columns:1fr;padding:100px 24px 60px;gap:40px}
+  .hero-photo-wrap{max-width:100%}
+  .section{padding:64px 24px}
+  #positioning{padding:60px 24px}
+  .pos-inner{grid-template-columns:1fr}
+  .tech-timeline{grid-template-columns:1fr 1fr}
+  .timeline{padding-left:40px}
+  .timeline::before{left:8px}
+  .tl-date{display:none}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .cap-grid{grid-template-columns:1fr}
+  .imad-grid{grid-template-columns:1fr}
+  .global-grid{grid-template-columns:1fr}
+  .media-grid{grid-template-columns:1fr}
+  .awards-grid{grid-template-columns:1fr 1fr}
+  .photos-grid{grid-template-columns:1fr 1fr}
+  .pos-cards{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:20px;text-align:center}
+  .footer-info{text-align:center}
+  table{display:block;overflow-x:auto}
+  #quote{padding:80px 24px}
+}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-name">지성원<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="#overview">타임라인</a></li>
+    <li><a href="#career">경력</a></li>
+    <li><a href="#investments">투자</a></li>
+    <li><a href="#imad">i-MAD</a></li>
+    <li><a href="#global">글로벌</a></li>
+    <li><a href="#media">미디어</a></li>
+    <li><a href="#awards">수상</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- Left: Text -->
+  <div>
+    <div class="hero-kicker">Tech-Driven CEO</div>
+    <h1>
+      <span class="hero-name-ko">지 성 원</span>
+      <span class="hero-name-en">Sungwon<br>Jee</span>
+    </h1>
+    <p class="hero-tagline">
+      산업 간 언어를 통합하고,<br>
+      <strong>기술과 브랜드를 잇는 전략가</strong><br>
+      엔지니어에서 대표이사까지, 23년 간의 산업 융합 혁신 경영.
+    </p>
+    <div class="hero-numbers">
+      <div class="hero-num"><span class="n">23<sup>+</sup></span><span class="l">년 경력</span></div>
+      <div class="hero-num"><span class="n">9<sup>+</sup></span><span class="l">년 대표이사</span></div>
+      <div class="hero-num"><span class="n">500<sup>+</sup></span><span class="l">개 매장</span></div>
+      <div class="hero-num"><span class="n">385<sup>억</sup></span><span class="l">투자 유치</span></div>
+    </div>
+  </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- POSITIONING (아래로 이동) -->
+<section id="positioning">
+  <div class="pos-inner">
+    <div class="pos-left">
+      <h2>핵심<br><em>포지셔닝</em></h2>
+      <p>기업 Value Up, 글로벌 시장 확장,<br>Tech-Driven 신사업 0 to 1</p>
+      <div class="hero-contacts" style="margin-top:28px">
+        <a href="mailto:jee.sungwon@gmail.com">✉ jee.sungwon@gmail.com</a>
+        <a href="tel:01033417032">☎ 010-3341-7032</a>
+        <a href="https://www.linkedin.com/in/sungwon-jee-lewis/" target="_blank" rel="noopener">in LinkedIn</a>
+      </div>
+    </div>
+    <div class="pos-cards">
+      <div class="pos-card">
+        <div class="pos-card-label">창업 → 상장 준비</div>
+        <div class="pos-card-title">Full Cycle 경영 경험</div>
+        <div class="pos-card-body">기술 창업 → 브랜드 스케일업 → 글로벌 확장 → 투자 유치 → 기술특례상장 추진까지 전 단계 직접 실행</div>
+      </div>
+      <div class="pos-card">
+        <div class="pos-card-label">대표이사 9년+</div>
+        <div class="pos-card-title">500개 매장 · 150명 조직</div>
+        <div class="pos-card-body">달콤·비트 약 500개 매장 개설, 국내외 약 150명 조직 관리, 신사업 전환(DT) 주도</div>
+      </div>
+      <div class="pos-card">
+        <div class="pos-card-label">누적 385억 투자 유치</div>
+        <div class="pos-card-title">Seed ~ Series B 총괄</div>
+        <div class="pos-card-body">IR 데이터룸 직접 설계, 데이터 기반 경영. 기술특례상장 예비평가 A등급 · 투자기술평가 TI-1 획득</div>
+      </div>
+      <div class="pos-card">
+        <div class="pos-card-label">글로벌 운영</div>
+        <div class="pos-card-title">다국가 파트너십</div>
+        <div class="pos-card-body">일본·동남아·중국·모로코 등 다국가 파트너십 및 매장 운영. MWC 2019 스페인 참가</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW: TECH-DRIVEN TIMELINE -->
+<section id="overview" class="section section-dark">
+  <div class="sec-header">
+    <span class="sec-no">01</span>
+    <h2 class="sec-title">"Tech-Driven Timeline"</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="tech-timeline">
+    <div class="tt-item">
+      <div class="tt-num">1</div>
+      <div class="tt-period">2002 – 2006</div>
+      <div class="tt-stage">Stage 1 : The Foundation</div>
+      <div class="tt-co">ICO / 와이드포스</div>
+      <div class="tt-role">SW 엔지니어 (병역특례)<br>Engineering DNA 구축</div>
+    </div>
+    <div class="tt-item">
+      <div class="tt-num">2</div>
+      <div class="tt-period">2006 – 2013</div>
+      <div class="tt-stage">Stage 2 : Business Insight</div>
+      <div class="tt-co">㈜다날 / 다날엔터테인먼트</div>
+      <div class="tt-role">콘텐츠·엔터테인먼트 사업<br>IP · 플랫폼 사업 기획</div>
+    </div>
+    <div class="tt-item">
+      <div class="tt-num">3</div>
+      <div class="tt-period">2013 – 2020</div>
+      <div class="tt-stage">Stage 3 : Brand Leadership</div>
+      <div class="tt-co">㈜달콤 — 대표이사</div>
+      <div class="tt-role">달콤커피 브랜드 런칭·확장<br>F&B Expansion, 글로벌 진출</div>
+    </div>
+    <div class="tt-item">
+      <div class="tt-num">4</div>
+      <div class="tt-period">2020 – 2025</div>
+      <div class="tt-stage">Stage 4 : Future Tech</div>
+      <div class="tt-co">비트코퍼레이션 — 대표이사</div>
+      <div class="tt-role">로봇커피 비트, AI 푸드테크<br>기술특례상장 추진</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section section-navy" style="padding-top:0">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-num">385<em>억</em></span>
+      <span class="stat-label">누적 투자 유치</span>
+      <span class="stat-sub">Seed ~ Series B</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">500<em>+</em></span>
+      <span class="stat-label">매장 개설</span>
+      <span class="stat-sub">달콤 250 + 비트 270개점</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">9<em>년+</em></span>
+      <span class="stat-label">대표이사 경력</span>
+      <span class="stat-sub">상장사 계열사 포함</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">300<em>만</em></span>
+      <span class="stat-label">Ufotown 회원</span>
+      <span class="stat-sub">SM엔터 공동사업</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career" class="section section-dark">
+  <div class="sec-header">
+    <span class="sec-no">02</span>
+    <h2 class="sec-title">경력 사항</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date"><span class="tl-yr">2020</span><span class="tl-period">2020.10 – 2025.09</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-co">비트코퍼레이션(주)</div>
+      <div class="tl-role">대표이사 CEO</div>
+      <div class="tl-desc">국내 최초 AI 로봇커피 '비트' 기획·개발 및 시장화(v1.0~3.5). B2B·B2B2C·B2C 누적 270개점 오픈. 자율운영 무인매장 플랫폼 i-MAD 2.0 상용화 및 데이터 기반 의사결정 체계 구축(BIS). 누적 385억 원 투자 유치 및 IR 전략 총괄. 일본 파트너사(힐스톤 재팬) 제품 공급 계약(v3.5). 기술특례상장 예비기술평가 A등급(2024), 투자기술평가 TI-1 획득.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">AI 푸드테크</span><span class="tl-tag">로봇카페</span><span class="tl-tag">IPO 준비</span><span class="tl-tag">Series B</span><span class="tl-tag">DX 전환</span><span class="tl-tag">글로벌 수출</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date"><span class="tl-yr">2013</span><span class="tl-period">2013.02 – 2020.10</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-co">(주)달콤 (현 다날 F&amp;B)</div>
+      <div class="tl-role">대표이사 CEO</div>
+      <div class="tl-desc">달콤커피 브랜드 런칭 및 전국 250개점 스케일업(0 to 1). 다니엘헤니·신세경 모델 기용, 별에서온그대·태양의후예·도깨비 등 PPL 마케팅으로 브랜드 한류화. 싱가포르 1호점 개점 1개월 만에 월 매출 1억 돌파. 말레이시아·싱가포르·중국·모로코 마스터 프랜차이즈 운영. Soundblending / 베란다라이브 / MRO 시스템 / NPD Process 구축.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">브랜드 스케일업</span><span class="tl-tag">PPL 마케팅</span><span class="tl-tag">해외 프랜차이즈</span><span class="tl-tag">조직 150명</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date"><span class="tl-yr">2006</span><span class="tl-period">2006.04 – 2013.02</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-co">(주)다날 / (주)다날엔터테인먼트</div>
+      <div class="tl-role">콘텐츠·엔터테인먼트 사업본부</div>
+      <div class="tl-desc">모바일 콘텐츠 유통 및 프리미엄 IP 사업 기획. SM엔터테인먼트와 공동사업으로 팬 커뮤니케이션 플랫폼 'Ufotown' 런칭(약 300만 회원). 아이돌 MD Goods 제작·유통, 콘서트·팬미팅·쇼케이스 기획.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">IP 사업</span><span class="tl-tag">플랫폼 기획</span><span class="tl-tag">SM 공동사업</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date"><span class="tl-yr">2002</span><span class="tl-period">2002.01 – 2006.03</span></div>
+      <div class="tl-dot"></div>
+      <div class="tl-co">㈜ICO / 와이드포스 (병역특례)</div>
+      <div class="tl-role">소프트웨어 엔지니어</div>
+      <div class="tl-desc">병역특례 엔지니어로 시스템·소프트웨어 개발. KT "Drama", "Na", "Roming" 등 SI 시스템 개발 및 SSO 구축. 현대 모비스 포세일즈 구축. 스타 화보 콘텐츠, 플레이보이/맥심 라이선스 계약 운영.</div>
+      <div class="tl-tags">
+        <span class="tl-tag">SW 엔지니어링</span><span class="tl-tag">SI 개발</span><span class="tl-tag">KT 프로젝트</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENTS -->
+<section id="investments" class="section section-alt">
+  <div class="sec-header">
+    <span class="sec-no">03</span>
+    <h2 class="sec-title">투자 유치 실적</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="inv-hero">
+    <div class="inv-big">385<span>억</span></div>
+    <div class="inv-sub">Seed부터 Series B까지<br>전 라운드 IR 전략 수립·실행 및<br>딜 클로징 직접 총괄</div>
+  </div>
+  <table>
+    <thead><tr><th>연도</th><th>소속 기업</th><th>투자 구분</th><th>발행 형태</th><th>투자 규모</th><th>주요 투자자</th></tr></thead>
+    <tbody>
+      <tr><td>2018</td><td>다날 F&amp;B</td><td><span class="badge seed">초기투자</span></td><td>CB</td><td class="td-amount">150억</td><td>주요 VC 및 금융권 FI</td></tr>
+      <tr><td>2021</td><td>비트코퍼레이션</td><td><span class="badge">Series A</span></td><td>RCPS</td><td class="td-amount">90억</td><td>스톤브릿지벤처스, SL인베, IBK기업은행</td></tr>
+      <tr><td>2023</td><td>비트코퍼레이션</td><td><span class="badge br">Bridge</span></td><td>RCPS</td><td class="td-amount">15억</td><td>전략적 개인 투자자</td></tr>
+      <tr><td>2024</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">80억</td><td>KB증권, 신한투자증권 등</td></tr>
+      <tr><td>2025</td><td>비트코퍼레이션</td><td><span class="badge b">Series B</span></td><td>RCPS</td><td class="td-amount">50억</td><td>전략적 투자자(SI) — 현대계열 등</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="section">
+  <div class="sec-header">
+    <span class="sec-no">04</span>
+    <h2 class="sec-title">세 가지 핵심 역량</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <span class="cap-bg">01</span>
+      <span class="cap-ico">⚙️</span>
+      <div class="cap-title">기술 기반 제품 개발</div>
+      <div class="cap-body">SW 엔지니어 출신 실무형 창업가. HW·SW 융합 제품 기획 및 MVP 출시 강점. 1,000만 잔 데이터 기반 AI 무인매장 플랫폼(i-MAD) 자체 개발·상용화. AWS Re:Invent 혁신기업 2회 선정. 핵심특허 8건 포함 총 23개 특허 등록·출원.</div>
+    </div>
+    <div class="cap-card">
+      <span class="cap-bg">02</span>
+      <span class="cap-ico">📊</span>
+      <div class="cap-title">경영 · 투자 리더십</div>
+      <div class="cap-body">9년+ 대표이사 경험. Seed~Series B 전 라운드 직접 총괄. IR 데이터룸 설계, 투자자 피칭, Term-sheet 협상, Deal Closing까지 원스톱 실행. 예비기술평가 A등급 · 투자기술평가 TI-1 최상위 확보.</div>
+    </div>
+    <div class="cap-card">
+      <span class="cap-bg">03</span>
+      <span class="cap-ico">🌐</span>
+      <div class="cap-title">산업 융합 실행력</div>
+      <div class="cap-body">S/W 엔지니어 → 모바일 콘텐츠(IP) → 프랜차이즈 → AI 푸드테크로 진화한 하이브리드 전문가. 글로벌 다문화 파트너십/계약 실무. 세바시, 한경TV, ET 테크리더스포럼 등 공개 미디어 다수.</div>
+    </div>
+  </div>
+</section>
+
+<!-- i-MAD PLATFORM -->
+<section id="imad" class="section section-navy">
+  <div class="sec-header">
+    <span class="sec-no">05</span>
+    <h2 class="sec-title">i-MAD Platform</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="imad-grid">
+    <div>
+      <p class="imad-desc">b;eat가 독자적으로 개발한 매장 제어 운영 체계. 관리 유지 · 운영 자동화 · 데이터 클라우드 기반의 통합 플랫폼. <strong style="color:#fff">Autonomous Retailing — RPA × Platform</strong> 구조로 구현한 푸드테크 글로벌 No.1 비전.</p>
+      <div class="imad-stages">
+        <div class="imad-stage">
+          <div class="imad-stage-name">i-MAD 1.0 — 기반 구축</div>
+          <div class="imad-stage-body">CMS(매출관리·매장관리·지표관리·인적 오류 관리) + CAO(운영 자동화·헬스케어·모니터링) + BIS(데이터 수집·시각화·장비상태 모니터링)</div>
+        </div>
+        <div class="imad-stage">
+          <div class="imad-stage-name">i-MAD 2.0 — 상용화 (2024)</div>
+          <div class="imad-stage-body">USP 자동화 · 자동물류발주 · 플랫폼 서비스(Shop, Membership, Payment). 오토 튜닝/속도 튜닝. FORECAST 시계열 예측 · 리소스 예측 생성</div>
+        </div>
+        <div class="imad-stage">
+          <div class="imad-stage-name">i-MAD 3.0 — 로드맵</div>
+          <div class="imad-stage-body">하드웨어 지능화(제조공정 자동화) · 자율 운영 시스템 도입 · 상품 제조 지능화(무휴 시간 자동 상품 제조) · 자율 배송 시스템</div>
+        </div>
+      </div>
+    </div>
+    <div class="imad-right">
+      <h3>AWS 혁신 사례 2차례 선정</h3>
+      <div class="imad-features">
+        <div class="imad-feat">
+          <div class="imad-feat-title">🏆 AWS re:Invent 2021</div>
+          <div class="imad-feat-body">라스베가스 — 혁신기업 선정. IoT + Data + DevOps 통합 아키텍처</div>
+        </div>
+        <div class="imad-feat">
+          <div class="imad-feat-title">🏆 AWS Innovate 2022</div>
+          <div class="imad-feat-body">AI/ML 에디션 — Amazon Forecast 활용 수요 예측 혁신 사례</div>
+        </div>
+        <div class="imad-feat">
+          <div class="imad-feat-title">🥇 예비기술평가 A등급</div>
+          <div class="imad-feat-body">나이스평가정보 (2024.11) — 핵심특허 8건 포함 23개 등록·출원</div>
+        </div>
+        <div class="imad-feat">
+          <div class="imad-feat-title">🥇 투자기술평가 TI-1</div>
+          <div class="imad-feat-body">최상위 등급 (2024.12) — 미래 성장 가능성 최고 수준 인정</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL -->
+<section id="global" class="section section-slate">
+  <div class="sec-header">
+    <span class="sec-no">06</span>
+    <h2 class="sec-title">글로벌 사업 운영</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="global-grid">
+    <div>
+      <div class="brand-card">
+        <div class="brand-nm">비트코퍼레이션 b;eat</div>
+        <div class="brand-per">2020 – 2025 · AI 로봇커피</div>
+        <div class="brand-txt">국내 최초 푸드테크 로봇카페 상용화. AI 기반 자율운영 무인매장 플랫폼으로 진화, 전국 서울·경기 160+대 포함 누적 270호점. 기술특례상장 A등급 및 IPO 준비 중.</div>
+        <div class="brand-nums">
+          <div class="bn"><div class="n">270</div><div class="l">누적 매장</div></div>
+          <div class="bn"><div class="n">1천만</div><div class="l">판매 잔수</div></div>
+          <div class="bn"><div class="n">A등급</div><div class="l">기술평가</div></div>
+        </div>
+      </div>
+      <div class="brand-card">
+        <div class="brand-nm">달콤커피 dal.komm</div>
+        <div class="brand-per">2013 – 2020 · 커피 프랜차이즈</div>
+        <div class="brand-txt">국내 250개점 스케일업. 한류 PPL 마케팅(태양의후예·도깨비·별에서온그대)으로 아시아 가맹 문의 400% 급증. 싱가포르·말레이시아·중국·모로코 마스터 프랜차이즈 운영.</div>
+        <div class="brand-nums">
+          <div class="bn"><div class="n">250</div><div class="l">국내 매장</div></div>
+          <div class="bn"><div class="n">4개국</div><div class="l">해외 운영</div></div>
+          <div class="bn"><div class="n">+400%</div><div class="l">가맹 문의</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="loc-list">
+      <h3>운영 국가 및 파트너십</h3>
+      <div class="loc-item"><span class="loc-flag">🇯🇵</span><div><div class="loc-country">Japan</div><div class="loc-detail">비트 v3.5 제품 공급 계약 — 힐스톤 재팬</div></div></div>
+      <div class="loc-item"><span class="loc-flag">🇸🇬</span><div><div class="loc-country">Singapore</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 / 개점 1개월 월 매출 1억+</div></div></div>
+      <div class="loc-item"><span class="loc-flag">🇲🇾</span><div><div class="loc-country">Malaysia</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 다점포 운영</div></div></div>
+      <div class="loc-item"><span class="loc-flag">🇨🇳</span><div><div class="loc-country">China</div><div class="loc-detail">달콤커피 현지 파트너십 및 매장 운영</div></div></div>
+      <div class="loc-item"><span class="loc-flag">🇲🇦</span><div><div class="loc-country">Morocco</div><div class="loc-detail">달콤커피 마스터 프랜차이즈 계약 체결</div></div></div>
+      <div class="loc-item"><span class="loc-flag">🇪🇸</span><div><div class="loc-country">Spain — MWC 2019</div><div class="loc-detail">바르셀로나 MWC 참가 · 비트 2.0 글로벌 전시</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- MEDIA -->
+<section id="media" class="section section-alt">
+  <div class="sec-header">
+    <span class="sec-no">07</span>
+    <h2 class="sec-title">미디어 · 강연</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="media-grid">
+    <a class="media-card" href="https://mbiz.heraldcorp.com/view.php?ud=202104200941180512125_1" target="_blank" rel="noopener">
+      <div class="mc-src">헤럴드경제</div>
+      <div class="mc-title">"로봇 커피 드셔보셨나요?" — 비트코퍼레이션 대표 인터뷰</div>
+      <div class="mc-body">엔지니어 출신으로 달콤커피를 거쳐 국내 최초 로봇카페 상용화를 이끈 창업 철학과 푸드테크 비전.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://www.etoday.co.kr/news/view/2005771" target="_blank" rel="noopener">
+      <div class="mc-src">이투데이</div>
+      <div class="mc-title">세계 최초 로봇카페 상용화, '휴먼 터치'로 승부</div>
+      <div class="mc-body">비트박스 판교 오픈 및 3세대 로봇카페 '휴먼 터치' 전략 공개 스타트업 인터뷰.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://www.etoday.co.kr/news/view/1760379" target="_blank" rel="noopener">
+      <div class="mc-src">이투데이 초대석</div>
+      <div class="mc-title">"싱가포르에선 스타벅스보다 매출 더 높죠"</div>
+      <div class="mc-body">달콤커피를 외식업이 아닌 콘텐츠 사업으로 재정의하고 글로벌 시장을 공략한 전략 인터뷰.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://www.etnews.com/20230718000253" target="_blank" rel="noopener" style="padding:0;overflow:hidden">
+      <div style="padding:32px">
+        <div class="mc-src">전자신문</div>
+        <div class="mc-title">ET테크리더스포럼 — "RPA와 플랫폼이 만난 푸드테크, 미래를 연다"</div>
+        <div class="mc-body">2023 ET테크리더스포럼 강연. 비트코퍼레이션 푸드테크 전략과 i-MAD 고도화 방향 발표.</div>
+        <div class="mc-link">기사 읽기 →</div>
+      </div>
+    </a>
+    <a class="media-card" href="https://www.cstimes.com/news/articleView.html?idxno=462080" target="_blank" rel="noopener">
+      <div class="mc-src">컨슈머타임스 초대석</div>
+      <div class="mc-title">비트코퍼레이션 대표 — 글로벌 푸드테크 비즈니스의 미래 선도</div>
+      <div class="mc-body">비트박스 상용화 배경과 플랫폼 비전, 시리즈A 투자 유치 성공 후 중장기 목표 인터뷰.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://www.dailian.co.kr/news/view/781317" target="_blank" rel="noopener">
+      <div class="mc-src">데일리안</div>
+      <div class="mc-title">"로봇카페 비트로 커피업계의 애플·구글이 되겠다"</div>
+      <div class="mc-body">MWC 2019 바르셀로나 참가 후 비트 2.0 공개 발표 및 KT 기가지니 솔루션 연동 비전 제시.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://m.etnews.com/20210303000143" target="_blank" rel="noopener">
+      <div class="mc-src">전자신문</div>
+      <div class="mc-title">비트코퍼레이션 "세계 최초 로봇카페 상용화…리테일 자율주행 개막"</div>
+      <div class="mc-body">비트박스 언박싱 미디어데이 — AI·RPA·IoT 융합 리테일 자동화 플랫폼 비전 발표.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+    <a class="media-card" href="https://www.cstimes.com/news/articleView.html?idxno=267168" target="_blank" rel="noopener">
+      <div class="mc-src">컨슈머타임스 초대석</div>
+      <div class="mc-title">지성원 달콤커피 대표 — "비트, 카페 4.0 시대를 연다"</div>
+      <div class="mc-body">비트 개발 비하인드 스토리. "단순한 하드웨어가 아닌 플랫폼" — 1000억 투자 유치 배경 공개.</div>
+      <div class="mc-link">기사 읽기 →</div>
+    </a>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="section section-navy">
+  <div class="sec-header">
+    <span class="sec-no">08</span>
+    <h2 class="sec-title">글로벌 · 수상 내역</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-year">2024</div>
+      <div class="award-title">예비기술평가 A등급</div>
+      <div class="award-body">나이스평가정보 — 기술 완성도, 경쟁 우위, 시장성 부문 A등급. 핵심특허 8건 포함 23개 등록·출원</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2024</div>
+      <div class="award-title">투자기술평가 TI-1 획득</div>
+      <div class="award-body">최상위 등급 수준 — 매우 우수한 기술력과 성장 잠재성 인정 (2024.12)</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2022</div>
+      <div class="award-title">AWS Innovate 혁신기업</div>
+      <div class="award-body">(주)비트코퍼레이션 — AWS Innovate AI/ML 에디션 혁신 사례 선정</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2021</div>
+      <div class="award-title">AWS re:Invent 혁신기업</div>
+      <div class="award-body">(주)비트코퍼레이션 — 라스베가스 AWS re:Invent 혁신기업 선정</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2018</div>
+      <div class="award-title">i-AWARDS 코리아 대상</div>
+      <div class="award-body">비트커피 앱 — 2018 스마트앱어워드 대상 수상</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2017</div>
+      <div class="award-title">스마트앱어워드 대상</div>
+      <div class="award-body">달콤커피 — 2017 스마트앱어워드 식음료 부문 대상 수상</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2016</div>
+      <div class="award-title">KOREA TOP BRAND AWARD</div>
+      <div class="award-body">한국언론인협회 — ㈜달콤 고객감동브랜드대상 수상</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">2015</div>
+      <div class="award-title">Best of the Best Brand Awards</div>
+      <div class="award-body">중앙일보 — 달콤커피 커피프랜차이즈 부문 대상 수상</div>
+    </div>
+    <div class="award-card">
+      <div class="award-year">강연 · 미디어</div>
+      <div class="award-title">세바시 · 한경TV · 테크리더스포럼</div>
+      <div class="award-body">세바시(세상을 바꾸는 시간 15분), 한국경제TV 파워인터뷰, 전자신문 ET 테크리더스포럼(2022–2024), 연세대 포럼, LG유플러스 C-Level 강연</div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section id="quote">
+  <p class="q-text">
+    "Bridging Tech to Brands,<br>
+    <em>Scaling Values</em> to Global."
+  </p>
+  <div class="q-attr">— Sungwon Jee, CEO · b;eat Corp. · dal.komm Coffee</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">지성원<em>.</em></div>
+  <div class="footer-info">
+    <a href="mailto:jee.sungwon@gmail.com" style="color:inherit;text-decoration:none">jee.sungwon@gmail.com</a> &nbsp;·&nbsp; 010-3341-7032 &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/sungwon-jee-lewis/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">LinkedIn</a><br>
+    경기도 성남시 위례동 &nbsp;·&nbsp; 경희대학교 컴퓨터공학 (2002)<br>
+    © 2026 Sungwon Jee — Value Creation Leader
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  document.getElementById('bar').style.width=(h.scrollTop/(h.
