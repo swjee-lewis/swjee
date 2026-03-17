@@ -215,9 +215,26 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 @media print{
   nav,#bar{display:none !important}
   #hero{padding-top:40px !important}
+  .sec-header{page-break-after:avoid;break-after:avoid}
+  .cap-grid{page-break-inside:avoid;break-inside:avoid}
+  .cap-card{page-break-inside:avoid;break-inside:avoid}
+  #capabilities{page-break-inside:avoid;break-inside:avoid}
 }
 
 /* MOBILE */
+/* TABLET — 타임라인 중간 크기 대응 */
+@media(max-width:1100px) and (min-width:961px){
+  .tech-timeline::after{left:10px;right:10px}
+  .tt-above,.tt-below{padding:0 8px 12px;min-height:110px}
+  .tt-above{padding-bottom:12px}
+  .tt-below{padding-top:12px}
+  .tt-period{font-size:11px}
+  .tt-co{font-size:13px}
+  .tt-role{font-size:10px}
+  .tt-dot{width:36px;height:36px;font-size:14px}
+  .tt-vline{height:30px}
+}
+
 @media(max-width:960px){
   nav{padding:16px 24px}
   nav.slim{padding:10px 24px}
@@ -234,12 +251,13 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
   .section{padding:64px 24px}
   .sec-title{font-size:28px}
   /* Tech timeline: vertical cards on mobile */
-  .tech-timeline{flex-direction:column}
+  .tech-timeline{flex-direction:column;gap:2px}
   .tech-timeline::after{display:none}
-  .tt-item{flex-direction:row;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
-  .tt-above,.tt-below{min-height:auto;padding:0;justify-content:flex-start;text-align:left;flex:1}
+  .tt-item{flex-direction:row;align-items:center;gap:20px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .tt-item:last-child{border-bottom:none}
+  .tt-above,.tt-below{min-height:auto;padding:0;justify-content:flex-start;text-align:left;flex:1;visibility:visible !important}
   .tt-connector{flex-direction:column;align-items:center;flex-shrink:0;width:44px}
-  .tt-vline{display:none}
+  .tt-vline{display:none !important}
   .stats-grid{grid-template-columns:1fr 1fr}
   .stat-card{padding:24px 12px}
   .stat-num{font-size:36px}
