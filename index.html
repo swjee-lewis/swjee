@@ -10,13 +10,12 @@
 :root{
   --black:#111;--white:#FAFAF7;--warm:#F0EBE1;--mid:#DDD6C8;
   --rust:#C04A2A;--gold:#C9964A;--slate:#4A5560;--muted:#8A9AA5;
-  --navy:#0F1B2D;--blue:#2563EB;
+  --navy:#0F1B2D;
   --font:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,sans-serif;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--font);background:var(--white);color:var(--black);line-height:1.6;-webkit-font-smoothing:antialiased}
 
-/* PROGRESS */
 #bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--rust);z-index:200;transition:width .1s linear}
 
 /* NAV */
@@ -30,25 +29,21 @@ nav.slim{padding:12px 60px}
 
 /* HERO */
 #hero{min-height:100vh;padding:120px 60px 0;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;background:var(--white)}
-.hero-photo-wrap{position:relative;width:100%;max-width:420px}
-.hero-photo{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;background:#ddd}
-.hero-photo-badge{position:absolute;bottom:-20px;right:-20px;background:var(--rust);color:#fff;padding:16px 20px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;line-height:1.5}
-
 .hero-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--rust);margin-bottom:20px}
 .hero-kicker::before{content:'';display:block;width:36px;height:1px;background:var(--rust)}
 .hero-name-ko{display:block;font-size:clamp(14px,1.8vw,20px);font-weight:500;letter-spacing:.22em;color:var(--slate);margin-bottom:8px}
 .hero-name-en{font-size:clamp(48px,6.5vw,88px);font-weight:900;letter-spacing:-.04em;line-height:.95;color:var(--black)}
 .hero-tagline{margin-top:24px;font-size:16px;font-weight:400;line-height:1.75;color:var(--slate);max-width:480px}
 .hero-tagline strong{color:var(--rust);font-weight:700}
-.hero-numbers{display:flex;margin-top:40px;margin-bottom:0;border-top:1px solid var(--mid);border-bottom:1px solid var(--mid)}
-.hero-num{flex:1;padding:24px 8px;border-right:1px solid var(--mid)}
+.hero-numbers{display:flex;margin-top:40px;border-top:1px solid var(--mid);border-bottom:1px solid var(--mid)}
+.hero-num{flex:1;padding:24px 12px;border-right:1px solid var(--mid);min-width:0}
 .hero-num:last-child{border-right:none}
-.hero-num .n{display:block;font-size:44px;font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1}
+.hero-num .n{display:block;font-size:clamp(26px,3vw,42px);font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1;white-space:nowrap}
 .hero-num .n sup{font-size:.5em;color:var(--rust);vertical-align:super}
-.hero-num .l{display:block;margin-top:6px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.hero-num .l{display:block;margin-top:5px;font-size:clamp(9px,.9vw,11px);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 
-/* POSITIONING (below hero) */
-#positioning{background:var(--navy);color:#fff;padding:24px 60px 48px}
+/* POSITIONING */
+#positioning{background:var(--navy);color:#fff;padding:48px 60px}
 .pos-inner{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:center}
 .pos-left h2{font-size:clamp(28px,3.5vw,44px);font-weight:900;letter-spacing:-.03em;line-height:1.1;color:#fff}
 .pos-left h2 em{color:var(--rust);font-style:normal;display:block}
@@ -65,7 +60,7 @@ nav.slim{padding:12px 60px}
 
 /* SECTION */
 .section{padding:100px 60px}
-..section-alt{background:var(--warm)}
+.section-alt{background:var(--warm)}
 .section-dark{background:var(--black);color:#fff}
 .section-slate{background:var(--slate);color:#fff}
 .section-navy{background:var(--navy);color:#fff}
@@ -76,17 +71,21 @@ nav.slim{padding:12px 60px}
 .sec-line{flex:1;height:1px;background:rgba(0,0,0,.1)}
 .section-dark .sec-line,.section-slate .sec-line,.section-navy .sec-line{background:rgba(255,255,255,.12)}
 
-/* TECH TIMELINE (overview) */
-.tech-timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
-.tt-item{background:rgba(255,255,255,.04);padding:36px 28px;position:relative;border-top:3px solid transparent;transition:border-color .3s,background .3s}
-.tt-item:hover{background:rgba(255,255,255,.08);border-color:var(--rust)}
-.tt-num{font-size:56px;font-weight:900;color:rgba(255,255,255,.06);letter-spacing:-.04em;line-height:1;margin-bottom:16px}
-.tt-period{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
-.tt-stage{font-size:12px;font-weight:500;color:rgba(255,255,255,.4);margin-bottom:14px}
-.tt-co{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px}
-.tt-role{font-size:13px;font-weight:400;color:rgba(255,255,255,.55);line-height:1.6}
+/* TECH TIMELINE — horizontal zigzag */
+.tech-timeline{position:relative;display:flex;align-items:stretch;padding:0}
+.tech-timeline::after{content:'';position:absolute;left:22px;right:22px;top:50%;height:2px;background:rgba(255,255,255,.2);z-index:0}
+.tt-item{flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
+.tt-above{min-height:130px;padding:0 16px 16px;display:flex;flex-direction:column;justify-content:flex-end;text-align:center}
+.tt-below{min-height:130px;padding:16px 16px 0;display:flex;flex-direction:column;justify-content:flex-start;text-align:center}
+.tt-connector{display:flex;flex-direction:column;align-items:center;flex-shrink:0;position:relative;z-index:2}
+.tt-dot{width:44px;height:44px;border-radius:50%;background:var(--rust);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0;border:4px solid var(--black);box-shadow:0 0 0 2px var(--rust)}
+.tt-vline{width:2px;height:40px;background:rgba(255,255,255,.2)}
+.tt-period{font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.tt-stage{font-size:10px;font-weight:500;color:rgba(255,255,255,.35);margin-bottom:8px}
+.tt-co{font-size:14px;font-weight:800;color:#fff;margin-bottom:4px;line-height:1.3}
+.tt-role{font-size:11px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.6}
 
-/* TIMELINE */
+/* CAREER TIMELINE */
 .timeline{position:relative;padding-left:180px}
 .timeline::before{content:'';position:absolute;left:148px;top:0;bottom:0;width:1px;background:rgba(255,255,255,.1)}
 .tl-item{position:relative;padding:44px 0 44px 48px;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -114,19 +113,28 @@ nav.slim{padding:12px 60px}
 .inv-big{font-size:clamp(72px,10vw,112px);font-weight:900;letter-spacing:-.05em;line-height:1;color:var(--black)}
 .inv-big span{color:var(--rust)}
 .inv-sub{font-size:15px;font-weight:400;line-height:1.7;color:var(--slate);max-width:260px;padding-bottom:8px}
-table{width:100%;border-collapse:collapse;display:table !important}
+table{width:100%;border-collapse:collapse;display:table}
 thead th{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px 20px;border-bottom:2px solid var(--black)}
-tbody td{padding:20px 20px;font-size:16px;color:var(--slate);border-bottom:1px solid var(--mid);vertical-align:middle}
+tbody td{padding:18px 20px;font-size:15px;color:var(--slate);border-bottom:1px solid var(--mid);vertical-align:middle}
 tbody tr:hover td{background:rgba(0,0,0,.02)}
-tbody td:first-child{font-weight:700;color:var(--black)}
 .td-year{font-size:18px;font-weight:900;color:var(--black);letter-spacing:-.02em}
-.td-co{font-size:16px;font-weight:700;color:var(--black)}
-.td-amount{display:block;font-size:28px;font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1.1}
-.td-sub{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-top:5px;letter-spacing:.02em}
+.td-co{font-size:15px;font-weight:700;color:var(--black)}
+.td-amount{display:block;font-size:26px;font-weight:900;letter-spacing:-.03em;color:var(--black);line-height:1.1}
+.td-sub{display:block;font-size:11px;font-weight:500;color:var(--muted);margin-top:4px}
 .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;background:var(--rust);color:white}
 .badge.b{background:var(--slate)}
 .badge.br{background:var(--gold);color:var(--black)}
 .badge.seed{background:transparent;border:1px solid var(--slate);color:var(--slate)}
+/* hide-mobile: shown on desktop, hidden on mobile */
+.hide-mobile{display:table-cell}
+/* mobile investment cards */
+.inv-cards{display:none}
+.inv-card{background:var(--white);border:1px solid var(--mid);padding:18px 20px;margin-bottom:10px}
+.inv-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.inv-card-year{font-size:13px;font-weight:700;color:var(--black);min-width:36px}
+.inv-card-amount{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--black);margin-left:auto}
+.inv-card-co{font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
+.inv-card-sub{font-size:12px;font-weight:400;color:var(--muted)}
 
 /* CAPABILITIES */
 .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
@@ -140,7 +148,7 @@ tbody td:first-child{font-weight:700;color:var(--black)}
 .cap-title{font-size:19px;font-weight:800;line-height:1.3;margin-bottom:12px;color:var(--black);transition:color .3s}
 .cap-body{font-size:13px;font-weight:400;line-height:1.8;color:var(--slate);transition:color .3s}
 
-/* i-MAD PLATFORM */
+/* i-MAD */
 .imad-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .imad-desc{font-size:14px;font-weight:400;line-height:1.85;color:rgba(255,255,255,.6);margin-bottom:32px}
 .imad-stages{display:flex;flex-direction:column;gap:12px}
@@ -175,13 +183,12 @@ tbody td:first-child{font-weight:700;color:var(--black)}
 .media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .media-card{background:var(--warm);padding:32px;transition:background .3s;display:flex;flex-direction:column;text-decoration:none}
 .media-card:hover{background:var(--rust)}
-.media-card:hover .mc-src,.media-card:hover .mc-title,.media-card:hover .mc-body{color:#fff}
+.media-card:hover .mc-src,.media-card:hover .mc-title,.media-card:hover .mc-body,.media-card:hover .mc-link{color:#fff}
 .mc-src{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rust);display:flex;align-items:center;gap:10px;margin-bottom:12px;transition:color .3s}
 .mc-src::before{content:'';display:block;width:16px;height:1px;background:currentColor}
 .mc-title{font-size:16px;font-weight:800;line-height:1.4;color:var(--black);margin-bottom:10px;transition:color .3s;flex:1}
 .mc-body{font-size:12px;font-weight:400;line-height:1.7;color:var(--slate);transition:color .3s}
 .mc-link{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--rust);margin-top:16px;transition:color .3s}
-.media-card:hover .mc-link{color:rgba(255,255,255,.8)}
 
 /* AWARDS */
 .awards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -190,15 +197,6 @@ tbody td:first-child{font-weight:700;color:var(--black)}
 .award-year{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:8px}
 .award-title{font-size:15px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.35}
 .award-body{font-size:12px;font-weight:400;color:rgba(255,255,255,.5);line-height:1.6}
-
-/* PHOTOS */
-.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
-.photo-item{position:relative;overflow:hidden;aspect-ratio:4/3}
-.photo-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
-.photo-item:hover img{transform:scale(1.04)}
-.photo-caption{position:absolute;bottom:0;left:0;right:0;padding:12px 16px;background:linear-gradient(transparent,rgba(0,0,0,.75));font-size:12px;font-weight:500;color:rgba(255,255,255,.85)}
-.photo-item.tall{grid-row:span 2;aspect-ratio:auto}
-.photo-item.tall img{height:100%}
 
 /* QUOTE */
 #quote{padding:120px 60px;background:var(--black);text-align:center;position:relative;overflow:hidden}
@@ -213,120 +211,65 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 .footer-name em{color:var(--rust);font-style:normal}
 .footer-info{font-size:12px;font-weight:400;letter-spacing:.03em;color:rgba(255,255,255,.3);text-align:right;line-height:1.9}
 
-/* RESPONSIVE */
-@media print {
-  nav, #bar { display: none !important; }
-  #hero { padding-top: 40px !important; }
+/* PRINT */
+@media print{
+  nav,#bar{display:none !important}
+  #hero{padding-top:40px !important}
 }
-  /* NAV */
-  nav{padding:14px 20px}
-  nav.slim{padding:10px 20px}
-  .nav-links{display:none}
 
-  /* HERO */
-  #hero{grid-template-columns:1fr;padding:90px 20px 0;gap:28px;min-height:auto}
-  .hero-kicker{font-size:11px;margin-bottom:14px}
-  .hero-name-ko{font-size:14px;margin-bottom:6px}
+/* MOBILE */
+@media(max-width:960px){
+  nav{padding:16px 24px}
+  nav.slim{padding:10px 24px}
+  .nav-links{display:none}
+  #hero{grid-template-columns:1fr;padding:100px 24px 0;gap:32px;min-height:auto}
   .hero-name-en{font-size:52px}
-  .hero-tagline{font-size:15px;margin-top:16px}
   .hero-numbers{margin-top:28px}
+  .hero-num{padding:16px 8px}
   .hero-num .n{font-size:32px}
   .hero-num .l{font-size:10px}
-  .hero-num{padding:16px 4px}
-
-  /* POSITIONING */
-  #positioning{padding:28px 20px 40px}
+  #positioning{padding:40px 24px}
   .pos-inner{grid-template-columns:1fr;gap:28px}
-  .pos-left h2{font-size:28px}
   .pos-cards{grid-template-columns:1fr}
-  .pos-card{padding:18px}
-  .hero-contacts{gap:8px}
-  .hero-contacts a{font-size:11px;padding:7px 12px}
-
-  /* SECTIONS */
-  .section{padding:56px 20px}
+  .section{padding:64px 24px}
   .sec-title{font-size:28px}
-
-  /* TECH TIMELINE */
-  .tech-timeline{grid-template-columns:1fr}
-  .tt-item{padding:24px 20px}
-  .tt-num{font-size:44px}
-
-  /* STATS */
+  /* Tech timeline: vertical cards on mobile */
+  .tech-timeline{flex-direction:column}
+  .tech-timeline::after{display:none}
+  .tt-item{flex-direction:row;gap:16px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .tt-above,.tt-below{min-height:auto;padding:0;justify-content:flex-start;text-align:left;flex:1}
+  .tt-connector{flex-direction:column;align-items:center;flex-shrink:0;width:44px}
+  .tt-vline{display:none}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .stat-card{padding:24px 8px}
-  .stat-num{font-size:36px;letter-spacing:-.03em}
-  .stat-label{font-size:13px}
-  .stat-sub{font-size:11px}
-
-  /* CAREER TIMELINE */
-  .timeline{padding-left:28px}
-  .timeline::before{left:6px}
+  .stat-card{padding:24px 12px}
+  .stat-num{font-size:36px}
+  .timeline{padding-left:32px}
+  .timeline::before{left:8px}
   .tl-date{display:none}
-  .tl-dot{left:-7px;width:14px;height:14px}
   .tl-item{padding:28px 0 28px 28px}
   .tl-role{font-size:20px}
-  .tl-desc{font-size:13px}
-
-  /* INVESTMENTS */
-  .inv-big{font-size:64px}
-  .inv-hero{gap:16px;margin-bottom:32px}
   table{display:none !important}
   .inv-cards{display:block !important}
-  .td-amount{font-size:18px}
-
-  /* CAPABILITIES */
+  .hide-mobile{display:none !important}
+  .inv-big{font-size:64px}
   .cap-grid{grid-template-columns:1fr}
-  .cap-card{padding:32px 24px}
-
-  /* i-MAD */
-  .imad-grid{grid-template-columns:1fr;gap:32px}
+  .imad-grid{grid-template-columns:1fr}
   .imad-features{grid-template-columns:1fr}
-
-  /* GLOBAL */
-  .global-grid{grid-template-columns:1fr;gap:32px}
-  .brand-card{padding:24px}
-  .brand-nm{font-size:18px}
-
-  /* MEDIA */
+  .global-grid{grid-template-columns:1fr}
   .media-grid{grid-template-columns:1fr}
-  .media-card{padding:24px}
-  .mc-title{font-size:15px}
-
-  /* AWARDS */
-  .awards-grid{grid-template-columns:1fr}
-  .award-card{padding:20px}
-
-  /* QUOTE */
-  #quote{padding:64px 20px}
-  .q-text{font-size:18px}
-
-  /* FOOTER */
-  footer{flex-direction:column;gap:16px;text-align:center;padding:40px 20px}
-  .footer-name{font-size:22px}
-  .footer-info{text-align:center;font-size:11px}
+  .awards-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:16px;text-align:center}
+  .footer-info{text-align:center}
+  #quote{padding:72px 24px}
 }
 
 @media(max-width:430px){
   .hero-name-en{font-size:42px}
   .hero-num .n{font-size:26px}
-  .hero-num .l{font-size:9px;letter-spacing:.06em}
   .stats-grid{grid-template-columns:1fr 1fr}
-  .stat-num{font-size:40px}
+  .stat-num{font-size:32px}
   .awards-grid{grid-template-columns:1fr}
-  .sec-title{font-size:24px}
-  .tl-role{font-size:18px}
-  .inv-big{font-size:52px}
 }
-
-/* INVESTMENT CARDS (mobile only) */
-.inv-cards{display:none}
-.inv-card{background:var(--white);border:1px solid var(--mid);padding:18px 20px;margin-bottom:10px}
-.inv-card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
-.inv-card-year{font-size:13px;font-weight:700;color:var(--black);min-width:36px}
-.inv-card-amount{font-size:22px;font-weight:900;letter-spacing:-.02em;color:var(--black);margin-left:auto}
-.inv-card-co{font-size:14px;font-weight:700;color:var(--black);margin-bottom:4px}
-.inv-card-sub{font-size:12px;font-weight:400;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -418,34 +361,71 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
     <div class="sec-line"></div>
   </div>
   <div class="tech-timeline">
+
+    <!-- 1: 위 -->
     <div class="tt-item">
-      <div class="tt-num">1</div>
-      <div class="tt-period">2002 – 2006</div>
-      <div class="tt-stage">Stage 1 : The Foundation</div>
-      <div class="tt-co">ICO / 와이드포스</div>
-      <div class="tt-role">SW 엔지니어 (병역특례)<br>Engineering DNA 구축</div>
+      <div class="tt-above">
+        <div class="tt-period">2002 – 2006</div>
+        <div class="tt-stage">Stage 1 : The Foundation</div>
+        <div class="tt-co">ICO / 와이드포스</div>
+        <div class="tt-role">SW 엔지니어 (병역특례)</div>
+      </div>
+      <div class="tt-connector">
+        <div class="tt-vline"></div>
+        <div class="tt-dot">1</div>
+        <div class="tt-vline" style="visibility:hidden"></div>
+      </div>
+      <div class="tt-below" style="visibility:hidden"></div>
     </div>
+
+    <!-- 2: 아래 -->
     <div class="tt-item">
-      <div class="tt-num">2</div>
-      <div class="tt-period">2006 – 2013</div>
-      <div class="tt-stage">Stage 2 : Business Insight</div>
-      <div class="tt-co">㈜다날 / 다날엔터테인먼트</div>
-      <div class="tt-role">콘텐츠·엔터테인먼트 사업<br>IP · 플랫폼 사업 기획</div>
+      <div class="tt-above" style="visibility:hidden"></div>
+      <div class="tt-connector">
+        <div class="tt-vline" style="visibility:hidden"></div>
+        <div class="tt-dot">2</div>
+        <div class="tt-vline"></div>
+      </div>
+      <div class="tt-below">
+        <div class="tt-period">2006 – 2013</div>
+        <div class="tt-stage">Stage 2 : Business Insight</div>
+        <div class="tt-co">㈜다날 / 다날엔터테인먼트</div>
+        <div class="tt-role">콘텐츠·엔터테인먼트 사업본부</div>
+      </div>
     </div>
+
+    <!-- 3: 위 -->
     <div class="tt-item">
-      <div class="tt-num">3</div>
-      <div class="tt-period">2013 – 2020</div>
-      <div class="tt-stage">Stage 3 : Brand Leadership</div>
-      <div class="tt-co">㈜달콤 — 대표이사</div>
-      <div class="tt-role">달콤커피 브랜드 런칭·확장<br>F&B Expansion, 글로벌 진출</div>
+      <div class="tt-above">
+        <div class="tt-period">2013 – 2020</div>
+        <div class="tt-stage">Stage 3 : Brand Leadership</div>
+        <div class="tt-co">㈜달콤 — 대표이사</div>
+        <div class="tt-role">달콤커피 브랜드 런칭·확장</div>
+      </div>
+      <div class="tt-connector">
+        <div class="tt-vline"></div>
+        <div class="tt-dot">3</div>
+        <div class="tt-vline" style="visibility:hidden"></div>
+      </div>
+      <div class="tt-below" style="visibility:hidden"></div>
     </div>
+
+    <!-- 4: 아래 -->
     <div class="tt-item">
-      <div class="tt-num">4</div>
-      <div class="tt-period">2020 – 2025</div>
-      <div class="tt-stage">Stage 4 : Future Tech</div>
-      <div class="tt-co">비트코퍼레이션 — 대표이사</div>
-      <div class="tt-role">로봇커피 비트, AI 푸드테크<br>기술특례상장 추진</div>
+      <div class="tt-above" style="visibility:hidden"></div>
+      <div class="tt-connector">
+        <div class="tt-vline" style="visibility:hidden"></div>
+        <div class="tt-dot">4</div>
+        <div class="tt-vline"></div>
+      </div>
+      <div class="tt-below">
+        <div class="tt-period">2020 – 2025</div>
+        <div class="tt-stage">Stage 4 : Future Tech</div>
+        <div class="tt-co">비트코퍼레이션 — 대표이사</div>
+        <div class="tt-role">로봇커피 비트, 기술특례상장 추진</div>
+      </div>
     </div>
+
   </div>
 </section>
 
@@ -542,43 +522,48 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
       <tr>
         <th>연도</th>
         <th>소속 기업</th>
+        <th class="hide-mobile">투자 구분</th>
         <th>투자 규모</th>
         <th class="hide-mobile">주요 투자자</th>
       </tr>
     </thead>
-    <tbody>
+        <tbody>
       <tr>
         <td class="td-year">2018</td>
-        <td class="td-co">다날 F&amp;B<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--rust);text-transform:uppercase">초기투자</span></td>
+        <td class="td-co">다날 F&amp;B</td>
+        <td class="hide-mobile"><span class="badge seed">초기투자</span></td>
         <td><span class="td-amount">150억</span><span class="td-sub">CB</span></td>
         <td class="hide-mobile">주요 VC 및 금융권 FI</td>
       </tr>
       <tr>
         <td class="td-year">2021</td>
-        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--rust);text-transform:uppercase">Series A</span></td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td class="hide-mobile"><span class="badge">Series A</span></td>
         <td><span class="td-amount">90억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">스톤브릿지벤처스, SL인베, IBK기업은행</td>
       </tr>
       <tr>
         <td class="td-year">2023</td>
-        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--gold);text-transform:uppercase">Bridge</span></td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td class="hide-mobile"><span class="badge br">Bridge</span></td>
         <td><span class="td-amount">15억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">전략적 개인 투자자</td>
       </tr>
       <tr>
         <td class="td-year">2024</td>
-        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);text-transform:uppercase">Series B</span></td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td class="hide-mobile"><span class="badge b">Series B</span></td>
         <td><span class="td-amount">80억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">KB증권, 신한투자증권 등</td>
       </tr>
       <tr>
         <td class="td-year">2025</td>
-        <td class="td-co">비트코퍼레이션<br><span style="font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--slate);text-transform:uppercase">Series B</span></td>
+        <td class="td-co">비트코퍼레이션</td>
+        <td class="hide-mobile"><span class="badge b">Series B</span></td>
         <td><span class="td-amount">50억</span><span class="td-sub">RCPS</span></td>
         <td class="hide-mobile">전략적 투자자(SI) — 현대계열 등</td>
       </tr>
-    </tbody>
-  </table>
+    </tbody>  </table>
 
   <!-- 모바일 카드 -->
   <div class="inv-cards">
