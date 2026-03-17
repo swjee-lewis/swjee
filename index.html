@@ -214,7 +214,10 @@ footer{background:var(--black);color:#fff;padding:52px 60px;display:flex;justify
 .footer-info{font-size:12px;font-weight:400;letter-spacing:.03em;color:rgba(255,255,255,.3);text-align:right;line-height:1.9}
 
 /* RESPONSIVE */
-@media(max-width:960px){
+@media print {
+  nav, #bar { display: none !important; }
+  #hero { padding-top: 40px !important; }
+}
   /* NAV */
   nav{padding:14px 20px}
   nav.slim{padding:10px 20px}
